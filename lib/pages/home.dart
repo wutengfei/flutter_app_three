@@ -1,39 +1,35 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-
   @override
   void initState() {
     print("initState");
-
   }
+
   @override
   Widget build(BuildContext context) {
     print("build");
     return Scaffold(
-      body:SafeArea(
-        child: Column(
-          children: [
-            FlatButton.icon(onPressed: (){
+        body: SafeArea(
+      child: Column(
+        children: [
+          FloatingActionButton(
+            onPressed: () {
               Navigator.pushNamed(context, "location");
             },
-                icon: Icon(Icons.add),
-                label: Text(
-                  "Add"
-                )  )
-          ],
-        ),
-      )
-    );
+          )
+        ],
+      ),
+    ));
   }
-
-
 }
+
 class TapboxA extends StatefulWidget {
   TapboxA({Key? key}) : super(key: key);
 
@@ -69,9 +65,6 @@ class _TapboxAState extends State<TapboxA> {
     );
   }
 }
-
-
-
 
 class ParentWidget extends StatefulWidget {
   @override
@@ -130,8 +123,6 @@ class TapboxB extends StatelessWidget {
     );
   }
 }
-
-
 
 class ParentWidgetC extends StatefulWidget {
   @override
@@ -200,8 +191,10 @@ class _TapboxCState extends State<TapboxC> {
   Widget build(BuildContext context) {
     // 在按下时添加绿色边框，当抬起时，取消高亮
     return GestureDetector(
-      onTapDown: _handleTapDown, // 处理按下事件
-      onTapUp: _handleTapUp, // 处理抬起事件
+      onTapDown: _handleTapDown,
+      // 处理按下事件
+      onTapUp: _handleTapUp,
+      // 处理抬起事件
       onTap: _handleTap,
       onTapCancel: _handleTapCancel,
       child: Container(
@@ -217,13 +210,12 @@ class _TapboxCState extends State<TapboxC> {
           color: widget.active ? Colors.lightGreen[700] : Colors.grey[600],
           border: _highlight
               ? Border.all(
-            color: Color.fromARGB(244, 244, 33, 12),
-            width: 10.0,
-          )
+                  color: Color.fromARGB(244, 244, 33, 12),
+                  width: 10.0,
+                )
               : null,
         ),
       ),
     );
   }
 }
-

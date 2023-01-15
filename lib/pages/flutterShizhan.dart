@@ -234,6 +234,9 @@ class TextAndButton extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.red, backgroundColor: Colors.cyanAccent),
                 ),
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.deepPurpleAccent)),
               ),
               Text.rich(TextSpan(children: [
                 TextSpan(text: "Home: "),
@@ -266,11 +269,22 @@ class TextAndButton extends StatelessWidget {
               ),
               TextButton(onPressed: () {}, child: Text("TextButton")),
               OutlinedButton(
-                child: Text("OutlinedButton"),
+                child: Text(
+                  "OutlinedButton",
+                  style: TextStyle(
+                      color: Colors.white, backgroundColor: Colors.amber),
+                ),
                 onPressed: () {},
+                style: const ButtonStyle(
+                  backgroundColor:
+                      MaterialStatePropertyAll<Color>(Colors.green),
+                ),
               ),
               OutlinedButton.icon(
-                label: Text("OutlinedButton"),
+                label: Text(
+                  "OutlinedButton",
+                  style: TextStyle(color: Colors.deepOrange),
+                ),
                 onPressed: () {},
                 icon: Icon(Icons.add),
               ),
@@ -320,10 +334,10 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("MainPage"),
       ),
-      body: Column(
-        children: [
-          Center(
-            child: ElevatedButton(
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
               onPressed: () async {
                 // 打开`TipRoute`，并等待返回结果
                 var result = await Navigator.of(context)
@@ -333,13 +347,19 @@ class MainPage extends StatelessWidget {
               },
               child: Text("text和Button"),
             ),
-          ),
-          ElevatedButton(
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "ImageTest");
+                },
+                child: Text("图片的使用")),
+            ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, "ImageTest");
+                Navigator.pushNamed(context, "SwitchAndCheckBoxTestRoute");
               },
-              child: Text("图片的使用"))
-        ],
+              child: Text("checkBox和Switch"),
+            )
+          ],
+        ),
       ),
     );
   }
